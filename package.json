@@ -5,7 +5,11 @@
   "main": "dist/br-dom.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-ts": "./node_modules/typescript/bin/tsc"
+    "build-ts": "./node_modules/typescript/bin/tsc",
+    "pub": "npm publish",
+    "ver-patch": "npm --force --no-git-tag-version version patch",
+    "ver-minor": "npm --force --no-git-tag-version version minor",
+    "ver-major": "npm --force --no-git-tag-version version major",
   },
   "repository": {
     "type": "git",
