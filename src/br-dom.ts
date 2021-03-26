@@ -1,4 +1,4 @@
-class BrDom {
+export default class BrDom {
     private readonly eventListeners: any[];
     private readonly children: any[];
     private element: any;

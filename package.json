@@ -1,15 +1,18 @@
 {
   "name": "brdom.js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Generate HTML at runtime with javascript",
-  "main": "dist/br-dom.js",
+  "main": "lib/br-dom.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-ts": "./node_modules/typescript/bin/tsc",
+    "watch-ts": "./node_modules/typescript/bin/tsc --watch",
     "pub": "npm publish",
     "ver-patch": "npm --force --no-git-tag-version version patch",
     "ver-minor": "npm --force --no-git-tag-version version minor",
-    "ver-major": "npm --force --no-git-tag-version version major"
+    "ver-major": "npm --force --no-git-tag-version version major",
+    "build": "webpack",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,23 @@
   },
   "homepage": "https://github.com/GlauberF/brdom.js#readme",
   "devDependencies": {
-    "typescript": "^4.2.3"
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.15.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.1.0",
+    "prettier": "1.16.4",
+    "typescript": "^4.2.3",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   }
 }

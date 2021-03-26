@@ -1,4 +1,4 @@
-class BrDom {
+export default class BrDom {
     constructor(object) {
         Object.assign(this, object);
         const childObjects = [];
