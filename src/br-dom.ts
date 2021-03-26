@@ -39,7 +39,8 @@ class BrDom {
         if (this.content) domElement.innerText = this.content;
         if (this.properties) {
             for (const prop in this.properties) {
-                domElement[prop] = this.properties[prop];
+                // domElement[prop] = this.properties[prop];
+                domElement.setAttribute(prop, this.properties[prop]);
             }
         }
         if (this.classes) {

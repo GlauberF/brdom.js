@@ -33,7 +33,8 @@ var BrDom = /** @class */ (function () {
                 domElement.innerText = this.content;
             if (this.properties) {
                 for (var prop in this.properties) {
-                    domElement[prop] = this.properties[prop];
+                    // domElement[prop] = this.properties[prop];
+                    domElement.setAttribute(prop, this.properties[prop]);
                 }
             }
             if (this.classes) {
