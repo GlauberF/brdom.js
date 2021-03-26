@@ -1,6 +1,6 @@
 {
   "name": "brdom.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate HTML at runtime with javascript",
   "main": "dist/br-dom.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "pub": "npm publish",
     "ver-patch": "npm --force --no-git-tag-version version patch",
     "ver-minor": "npm --force --no-git-tag-version version minor",
-    "ver-major": "npm --force --no-git-tag-version version major",
+    "ver-major": "npm --force --no-git-tag-version version major"
   },
   "repository": {
     "type": "git",

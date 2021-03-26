@@ -87,9 +87,10 @@ class BrDom {
      * Adds an event to the element based on the ID
      * @example
      *  const template1 = new Dominator(Templates.any({name: 'Glauber Funez'}));
-     *  template1.event('action', 'htmlElementId');
+     *  const _fn = () => { console.log('<< call >>') };
+     *  template1.event(_fn.bind(this), 'htmlElementId');
      *  document.getElementById("htmlElementId").addEventListener("click", () => {
-     *      console.log('working')
+     *      console.log('working -> ', el);
      *  });
      * @param action
      * @param id
