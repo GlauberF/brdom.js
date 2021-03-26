@@ -11,6 +11,8 @@ Because we have an array of children, with each child having the same shape as t
 * Simple.
 * Create a simple format for templates.
 * Very light.
+* Javascript vanilla
+* No dependencies
 
 ## how to use?
 
