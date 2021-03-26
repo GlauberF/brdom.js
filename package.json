@@ -1,6 +1,6 @@
 {
   "name": "brdom.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate HTML at runtime with javascript",
   "main": "dist/br-dom.js",
   "scripts": {

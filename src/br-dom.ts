@@ -35,8 +35,12 @@ class BrDom {
      */
     get domElement(): HTMLElement {
         const domElement = document.createElement(this.tag);
-        if (this.id) domElement.id = this.id;
-        if (this.content) domElement.innerText = this.content;
+        if (this.id) {
+            domElement.id = this.id
+        }
+        if (this.content !== null && this.content !== undefined) {
+            domElement.innerText = this.content
+        }
         if (this.properties) {
             for (const prop in this.properties) {
                 // domElement[prop] = this.properties[prop];
@@ -51,7 +55,9 @@ class BrDom {
         if (this.children) {
             for (const child of this.children) {
                 domElement.append(child.domElement);
-                if (child.id) this[child.id] = child.domElement;
+                if (child.id) {
+                    this[child.id] = child.domElement
+                }
             }
         }
         if (this.eventListeners) {
@@ -77,7 +83,9 @@ class BrDom {
                     return child
                 } else if (child.children) {
                     let found = child.findChildById(id)
-                    if (found) return found
+                    if (found) {
+                        return found
+                    }
                 }
             }
         }

@@ -27,10 +27,12 @@ var BrDom = /** @class */ (function () {
          */
         get: function () {
             var domElement = document.createElement(this.tag);
-            if (this.id)
+            if (this.id) {
                 domElement.id = this.id;
-            if (this.content)
+            }
+            if (this.content !== null && this.content !== undefined) {
                 domElement.innerText = this.content;
+            }
             if (this.properties) {
                 for (var prop in this.properties) {
                     // domElement[prop] = this.properties[prop];
@@ -47,8 +49,9 @@ var BrDom = /** @class */ (function () {
                 for (var _b = 0, _c = this.children; _b < _c.length; _b++) {
                     var child = _c[_b];
                     domElement.append(child.domElement);
-                    if (child.id)
+                    if (child.id) {
                         this[child.id] = child.domElement;
+                    }
                 }
             }
             if (this.eventListeners) {
@@ -79,8 +82,9 @@ var BrDom = /** @class */ (function () {
                 }
                 else if (child.children) {
                     var found = child.findChildById(id);
-                    if (found)
+                    if (found) {
                         return found;
+                    }
                 }
             }
         }
