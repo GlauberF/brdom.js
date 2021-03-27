@@ -21,7 +21,18 @@
   "keywords": [
     "html",
     "dom",
-    "html generator with javascript"
+    "html generator with javascript",
+    "generator",
+    "javascript",
+    "virtual dom",
+    "vdom",
+    "virtual",
+    "browser",
+    "jdom",
+    "json to dom",
+    "json to html",
+    "diff",
+    "powerful json"
   ],
   "author": "Glauber Funez",
   "license": "MIT",
