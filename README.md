@@ -100,10 +100,13 @@ console.log('findChildById: ', template1.findChildById('edit'));
 
 **Add Event**
 ```javascript
+// Function that will be called, when event is triggered
 const _fn = () => {
     console.log('<< call >>')
 };
+// Adding event to the element with _id edit
 template1.event(_fn.bind(this), 'edit');
+// Listening to element events with id edit
 document.getElementById("edit").addEventListener("click", (el) => {
     console.log('working -> ', el);
 });
