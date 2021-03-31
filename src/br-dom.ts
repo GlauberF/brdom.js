@@ -93,6 +93,30 @@ export default class BrDom {
     }
 
     /**
+     * Returns a created HTML element, based on its Css Class
+     * @example
+     * // see the example/example.js file
+     * const template1 = new BrDom(Templates.example({ id: 1, name: 'Test action buttons' }));
+     * console.log(template1.findChildByClassName('doc-control'));
+     * @param { cssClass }
+     */
+    findChildByClassName(cssClass: string) {
+        if(this.children) {
+            for(const child of this.children) {
+                if(child.classes && child.classes.includes(cssClass)) {
+                    return child;
+                }
+                else if(child.children) {
+                    let found = child.findChildByClassName(cssClass);
+                    if(found) {
+                        return found;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    /**
      * Adds an event to the element based on the ID
      * @example
      *  const template1 = new Dominator(Templates.any({name: 'Glauber Funez'}));

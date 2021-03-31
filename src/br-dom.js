@@ -62,6 +62,22 @@ export default class BrDom {
         }
         return false;
     }
+    findChildByClassName(cssClass) {
+        if (this.children) {
+            for (const child of this.children) {
+                if (child.classes && child.classes.includes(cssClass)) {
+                    return child;
+                }
+                else if (child.children) {
+                    let found = child.findChildByClassName(cssClass);
+                    if (found) {
+                        return found;
+                    }
+                }
+            }
+        }
+        return false;
+    }
     event(action, id, type = 'click') {
         if (id) {
             const node = this.findChildById(id);
