@@ -1,6 +1,6 @@
 {
   "name": "brdom.js",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Generate HTML at runtime with javascript",
   "main": "lib/br-dom.min.js",
   "scripts": {

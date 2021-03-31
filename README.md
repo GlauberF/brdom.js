@@ -96,6 +96,7 @@ console.log('DOM: ', template1.domElement);
 **Get an element**
 ```javascript
 console.log('findChildById: ', template1.findChildById('edit'));
+console.log('findChildByClassName: ', template1.findChildByClassName('doc-control'));
 ```
 
 **Add Event**
