@@ -98,7 +98,7 @@ export default class BrDom {
      * // see the example/example.js file
      * const template1 = new BrDom(Templates.example({ id: 1, name: 'Test action buttons' }));
      * console.log(template1.findChildByClassName('doc-control'));
-     * @param { cssClass }
+     * @param cssClass
      */
     findChildByClassName(cssClass: string) {
         if(this.children) {
