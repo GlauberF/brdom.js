@@ -139,7 +139,7 @@ See our example in the `example` folder!
 </table>
 
 ## Contributors
-Be the first to contribute, send your pull request.<br>
+Send your pull request.<br>
 <table>
   <tr>
     <td align="center">
