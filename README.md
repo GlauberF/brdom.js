@@ -139,7 +139,17 @@ See our example in the `example` folder!
 </table>
 
 ## Contributors
-Be the first to contribute, send your pull request
+Be the first to contribute, send your pull request.<br>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/ds-costa">
+        <img src="https://avatars.githubusercontent.com/u/37080007?v=4" width="100px;" />
+        <br />
+        <sub><b>David S. Costa</b></sub>
+      </a>
+    </td>
+  </tr>
 
 ## License
 MIT
