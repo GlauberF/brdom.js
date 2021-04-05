@@ -150,6 +150,7 @@ Be the first to contribute, send your pull request.<br>
       </a>
     </td>
   </tr>
+</table>
 
 ## License
 MIT
