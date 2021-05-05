@@ -40,6 +40,22 @@ const Templates = {
             },
             children: [
                 {
+                    conditions: {
+                        if: [
+                            {
+                                operator: '!==',
+                                content: obj.name,
+                                value: 'Test action buttons'
+                            }
+                        ],
+                    },
+                    tag: 'div',
+                    classes: ['doc-icon-header'],
+                    children: [
+                        { tag: 'h3', content: obj.name }
+                    ]
+                },
+                {
                     tag: 'div',
                     classes: ['doc-icon-header'],
                     children: [

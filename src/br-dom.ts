@@ -39,7 +39,8 @@ export default class BrDom {
      * @param domElement
      * @private
      */
-    private _ifCondition(domElement) {
+    private _checkConditions(domElement) {
+        // IF
         if(this.conditions?.if && Array.isArray(this.conditions.if)) {
             for (const condition of this.conditions.if) {
                 if (condition.operator === '==' || condition.operator === '===') {
@@ -76,10 +77,9 @@ export default class BrDom {
         const domElement = document.createElement(this.tag);
 
         // Conditions
-        const domElementIfCond = this._ifCondition(domElement);
-        if(domElementIfCond) {
-            this.element = domElementIfCond;
-            return domElementIfCond;
+        if(this._checkConditions(domElement)) {
+            this.element = '';
+            return this.element;
         }
 
         if (this.id) {

@@ -15,6 +15,22 @@ const Templates = {
                     conditions: {
                         if: [
                             {
+                                operator: '===',
+                                content: 1,
+                                value: 1
+                            }
+                        ],
+                    },
+                    tag: 'div',
+                    classes: ['doc-icon-header'],
+                    children: [
+                        { tag: 'h3', content: obj.name }
+                    ]
+                },
+                {
+                    conditions: {
+                        if: [
+                            {
                                 operator: '!==',
                                 content: obj.name,
                                 value: 'Test action buttons'
