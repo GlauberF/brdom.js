@@ -3,6 +3,13 @@ export default class BrDom {
     private readonly children: any[];
     private element: any;
     private id: any;
+    private conditions: {
+        [k: string]: {
+            operator: string;
+            content: any;
+            value: any
+        };
+    };
     private content: any;
     private properties: any;
     private tag: any;
@@ -28,6 +35,38 @@ export default class BrDom {
     }
 
     /**
+     * Analyzes if it has if condition and if it meets to continue
+     * @param domElement
+     * @private
+     */
+    private _ifCondition(domElement) {
+        if(this.conditions?.if && Array.isArray(this.conditions.if)) {
+            for (const condition of this.conditions.if) {
+                if (condition.operator === '==' || condition.operator === '===') {
+                    if(condition.content !== condition.value) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '!=' || condition.operator === '!==') {
+                    if(condition.content === condition.value) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '>' || condition.operator === '>=') {
+                    if(condition.content < condition.value) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '<' || condition.operator === '<=') {
+                    if(condition.content > condition.value) {
+                        return domElement;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * Return the DOM
      * @example
      * const template1 = new Dominator(Templates.any({name: 'Glauber Funez'}));
@@ -35,6 +74,14 @@ export default class BrDom {
      */
     get domElement(): HTMLElement {
         const domElement = document.createElement(this.tag);
+
+        // Conditions
+        const domElementIfCond = this._ifCondition(domElement);
+        if(domElementIfCond) {
+            this.element = domElementIfCond;
+            return domElementIfCond;
+        }
+
         if (this.id) {
             domElement.id = this.id
         }

@@ -12,6 +12,15 @@ const Templates = {
             },
             children: [
                 {
+                    conditions: {
+                        if: [
+                            {
+                                operator: '!==',
+                                content: obj.name,
+                                value: 'Test action buttons'
+                            }
+                        ],
+                    },
                     tag: 'div',
                     classes: ['doc-icon-header'],
                     children: [

@@ -1,5 +1,10 @@
 export default class BrDom {
+    /**
+     * Constructor
+     * @param object
+     */
     constructor(object) {
+        // @ts-ignore
         Object.assign(this, object);
         const childObjects = [];
         if (object.children) {
@@ -12,8 +17,52 @@ export default class BrDom {
         this.children = childObjects;
         this.element = this.domElement;
     }
+    /**
+     * Analyzes if it has if condition and if it meets to continue
+     * @param domElement
+     * @private
+     */
+    _ifCondition(domElement) {
+        var _a;
+        if (((_a = this.conditions) === null || _a === void 0 ? void 0 : _a.if) && Array.isArray(this.conditions.if)) {
+            for (const condition of this.conditions.if) {
+                if (condition.operator === '==' || condition.operator === '===') {
+                    if (condition.content !== condition.value) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '!=' || condition.operator === '!==') {
+                    if (condition.content === condition.value) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '>' || condition.operator === '>=') {
+                    if (condition.content < condition.value) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '<' || condition.operator === '<=') {
+                    if (condition.content > condition.value) {
+                        return domElement;
+                    }
+                }
+            }
+        }
+    }
+    /**
+     * Return the DOM
+     * @example
+     * const template1 = new Dominator(Templates.any({name: 'Glauber Funez'}));
+     * console.log(template1.domElement);
+     */
     get domElement() {
         const domElement = document.createElement(this.tag);
+        // Conditions
+        const domElementIfCond = this._ifCondition(domElement);
+        if (domElementIfCond) {
+            this.element = domElementIfCond;
+            return domElementIfCond;
+        }
         if (this.id) {
             domElement.id = this.id;
         }
@@ -22,6 +71,7 @@ export default class BrDom {
         }
         if (this.properties) {
             for (const prop in this.properties) {
+                // domElement[prop] = this.properties[prop];
                 domElement.setAttribute(prop, this.properties[prop]);
             }
         }
@@ -46,6 +96,13 @@ export default class BrDom {
         this.element = domElement;
         return domElement;
     }
+    /**
+     * Returns a created HTML element, based on its ID
+     * @example
+     * const template1 = new Dominator(Templates.any({name: 'Glauber Funez'}));
+     * console.log(template1.findChildById('htmlElementId'));
+     * @param id
+     */
     findChildById(id) {
         if (this.children) {
             for (const child of this.children) {
@@ -62,6 +119,14 @@ export default class BrDom {
         }
         return false;
     }
+    /**
+     * Returns a created HTML element, based on its Css Class
+     * @example
+     * // see the example/example.js file
+     * const template1 = new BrDom(Templates.example({ id: 1, name: 'Test action buttons' }));
+     * console.log(template1.findChildByClassName('doc-control'));
+     * @param cssClass
+     */
     findChildByClassName(cssClass) {
         if (this.children) {
             for (const child of this.children) {
@@ -78,6 +143,19 @@ export default class BrDom {
         }
         return false;
     }
+    /**
+     * Adds an event to the element based on the ID
+     * @example
+     *  const template1 = new Dominator(Templates.any({name: 'Glauber Funez'}));
+     *  const _fn = () => { console.log('<< call >>') };
+     *  template1.event(_fn.bind(this), 'htmlElementId');
+     *  document.getElementById("htmlElementId").addEventListener("click", () => {
+     *      console.log('working -> ', el);
+     *  });
+     * @param action
+     * @param id
+     * @param type
+     */
     event(action, id, type = 'click') {
         if (id) {
             const node = this.findChildById(id);
