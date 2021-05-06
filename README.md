@@ -44,8 +44,8 @@ const Templates = {
                         if: [
                             {
                                 operator: '!==',
-                                content: obj.name,
-                                value: 'Test action buttons'
+                                value: obj.name,
+                                analyzes: 'Test action buttons'
                             }
                         ],
                     },
