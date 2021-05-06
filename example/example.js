@@ -15,35 +15,31 @@ const Templates = {
                     conditions: {
                         if: [
                             {
-                                operator: '===',
-                                value: 1,
-                                analyzes: 1
+                                operator: '=null',
+                                value: null,
+                                // analyzes: 1
                             }
                         ],
                     },
                     tag: 'div',
                     classes: ['doc-icon-header'],
                     children: [
-                        { tag: 'h3', content: obj.name }
+                        { tag: 'h3', content: 'valor é null' }
                     ]
                 },
                 {
                     conditions: {
                         if: [
                             {
-                                operator: '!==',
+                                operator: '===',
                                 value: obj.name,
                                 analyzes: 'Test action buttons'
                             }
                         ],
                     },
                     tag: 'div',
-                    "classes": [
-                        "card-priority",
-                        "card-priority--medium"
-                    ],
                     children: [
-                        { tag: 'span', content: obj.name }
+                        { tag: 'h3', content: obj.name }
                     ]
                 },
                 {

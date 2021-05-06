@@ -5,7 +5,7 @@ export default class BrDom {
     private id: any;
     private conditions: {
         [k: string]: {
-            operator: '=='|'==='|'!='|'!=='|'>'|'>='|'<'|'<=';
+            operator: '=='|'==='|'!='|'!=='|'>'|'>='|'<'|'<='|'!null'|'=null'|'!undefined'|'=undefined';
             value: any;
             analyzes: any;
             reservedStructure?: {
@@ -68,6 +68,26 @@ export default class BrDom {
                 }
                 if (condition.operator === '<' || condition.operator === '<=') {
                     if(condition.value > condition.analyzes) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '=null') {
+                    if(condition.value !== null) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '!null') {
+                    if(condition.value === null) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '=undefined') {
+                    if(condition.value !== undefined) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '!undefined') {
+                    if(condition.value === undefined) {
                         return domElement;
                     }
                 }

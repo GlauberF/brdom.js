@@ -13,7 +13,6 @@ export default class BrDom {
         this.element = this.domElement;
     }
     _checkConditions(conditions, domElement) {
-        // IF
         if ((conditions === null || conditions === void 0 ? void 0 : conditions.if) && Array.isArray(conditions.if)) {
             for (const condition of this.conditions.if) {
                 if (condition.operator === '==' || condition.operator === '===') {
@@ -33,6 +32,26 @@ export default class BrDom {
                 }
                 if (condition.operator === '<' || condition.operator === '<=') {
                     if (condition.value > condition.analyzes) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '=null') {
+                    if (condition.value !== null) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '!null') {
+                    if (condition.value === null) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '=undefined') {
+                    if (condition.value !== undefined) {
+                        return domElement;
+                    }
+                }
+                if (condition.operator === '!undefined') {
+                    if (condition.value === undefined) {
                         return domElement;
                     }
                 }
