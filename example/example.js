@@ -16,8 +16,8 @@ const Templates = {
                         if: [
                             {
                                 operator: '===',
-                                content: 1,
-                                value: 1
+                                value: 1,
+                                analyzes: 1
                             }
                         ],
                     },
@@ -32,15 +32,18 @@ const Templates = {
                         if: [
                             {
                                 operator: '!==',
-                                content: obj.name,
-                                value: 'Test action buttons'
+                                value: obj.name,
+                                analyzes: 'Test action buttons'
                             }
                         ],
                     },
                     tag: 'div',
-                    classes: ['doc-icon-header'],
+                    "classes": [
+                        "card-priority",
+                        "card-priority--medium"
+                    ],
                     children: [
-                        { tag: 'h3', content: obj.name }
+                        { tag: 'span', content: obj.name }
                     ]
                 },
                 {

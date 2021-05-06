@@ -12,28 +12,27 @@ export default class BrDom {
         this.children = childObjects;
         this.element = this.domElement;
     }
-    _checkConditions(domElement) {
-        var _a;
+    _checkConditions(conditions, domElement) {
         // IF
-        if (((_a = this.conditions) === null || _a === void 0 ? void 0 : _a.if) && Array.isArray(this.conditions.if)) {
+        if ((conditions === null || conditions === void 0 ? void 0 : conditions.if) && Array.isArray(conditions.if)) {
             for (const condition of this.conditions.if) {
                 if (condition.operator === '==' || condition.operator === '===') {
-                    if (condition.content !== condition.value) {
+                    if (condition.value !== condition.analyzes) {
                         return domElement;
                     }
                 }
                 if (condition.operator === '!=' || condition.operator === '!==') {
-                    if (condition.content === condition.value) {
+                    if (condition.value === condition.analyzes) {
                         return domElement;
                     }
                 }
                 if (condition.operator === '>' || condition.operator === '>=') {
-                    if (condition.content < condition.value) {
+                    if (condition.value < condition.analyzes) {
                         return domElement;
                     }
                 }
                 if (condition.operator === '<' || condition.operator === '<=') {
-                    if (condition.content > condition.value) {
+                    if (condition.value > condition.analyzes) {
                         return domElement;
                     }
                 }
@@ -41,8 +40,8 @@ export default class BrDom {
         }
     }
     get domElement() {
-        const domElement = document.createElement(this.tag);
-        if (this._checkConditions(domElement)) {
+        let domElement = document.createElement(this.tag);
+        if (this._checkConditions(this.conditions, domElement)) {
             this.element = '';
             return this.element;
         }

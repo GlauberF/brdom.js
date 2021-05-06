@@ -5,9 +5,16 @@ export default class BrDom {
     private id: any;
     private conditions: {
         [k: string]: {
-            operator: string;
-            content: any;
-            value: any
+            operator: '=='|'==='|'!='|'!=='|'>'|'>='|'<'|'<=';
+            value: any;
+            analyzes: any;
+            reservedStructure?: {
+                classes?: string[];
+                properties?: {
+                    [k: string]: any
+                };
+                content?: any
+            }
         };
     };
     private content: any;
@@ -36,30 +43,31 @@ export default class BrDom {
 
     /**
      * Analyzes if it has if condition and if it meets to continue
+     * @param conditions
      * @param domElement
      * @private
      */
-    private _checkConditions(domElement) {
+    private _checkConditions(conditions, domElement) {
         // IF
-        if(this.conditions?.if && Array.isArray(this.conditions.if)) {
+        if(conditions?.if && Array.isArray(conditions.if)) {
             for (const condition of this.conditions.if) {
                 if (condition.operator === '==' || condition.operator === '===') {
-                    if(condition.content !== condition.value) {
+                    if(condition.value !== condition.analyzes) {
                         return domElement;
                     }
                 }
                 if (condition.operator === '!=' || condition.operator === '!==') {
-                    if(condition.content === condition.value) {
+                    if(condition.value === condition.analyzes) {
                         return domElement;
                     }
                 }
                 if (condition.operator === '>' || condition.operator === '>=') {
-                    if(condition.content < condition.value) {
+                    if(condition.value < condition.analyzes) {
                         return domElement;
                     }
                 }
                 if (condition.operator === '<' || condition.operator === '<=') {
-                    if(condition.content > condition.value) {
+                    if(condition.value > condition.analyzes) {
                         return domElement;
                     }
                 }
@@ -74,10 +82,10 @@ export default class BrDom {
      * console.log(template1.domElement);
      */
     get domElement(): HTMLElement {
-        const domElement = document.createElement(this.tag);
+        let domElement = document.createElement(this.tag);
 
         // Conditions
-        if(this._checkConditions(domElement)) {
+        if(this._checkConditions(this.conditions, domElement)) {
             this.element = '';
             return this.element;
         }
@@ -90,7 +98,6 @@ export default class BrDom {
         }
         if (this.properties) {
             for (const prop in this.properties) {
-                // domElement[prop] = this.properties[prop];
                 domElement.setAttribute(prop, this.properties[prop]);
             }
         }
