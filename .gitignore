@@ -1,4 +1,19 @@
+
+#== Node ==#
 node_modules
 /node_modules/*
+
+#== NPM ==#
+logs
+*.log
+npm-debug.log*
+
+#== Jetbrains ==#
 .idea
 /.idea/*
+
+#== Visual Studio Code ==#
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
